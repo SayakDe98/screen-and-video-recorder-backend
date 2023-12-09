@@ -18,7 +18,6 @@ app.use("/api/files", fileRoutes);
 //     res.send("Welcome to screen recorder app!")
 //   )
 // );
-
 app.get("/", async (req, res) => res.send("Welcome to screen recorder app!!!!"));
 app.listen(port, () => {
     console.log("Listening on port: ", port);
