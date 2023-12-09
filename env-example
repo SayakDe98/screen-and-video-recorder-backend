@@ -1,0 +1,4 @@
+port=4000
+jwtSecret=adfpiajf038ur12321e21e.pccdcdcd
+mongoURI=mongodb://localhost:27017/test
+mongoURI=mongodb+srv://SAYAK:t3yWG8LOYsnPnHV1@vidly.hvqtm.mongodb.net/test?retryWrites=true&w=majority
