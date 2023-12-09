@@ -1,0 +1,30 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+  docker-build:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+      - name: Build Docker containers
+        run: sudo make build
+      - name: Restart server with PM2
+        run: sudo pm2 restart screen-and-video-recorder-backend
